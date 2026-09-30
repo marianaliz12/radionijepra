@@ -91,11 +91,11 @@
 
   // ---------- API ----------
   async function api(path, { method = 'GET', body } = {}) {
-    const res = await fetch(path, {
+    const res = await fetch('https://radionijepra.onrender.com' + path, {
       method,
       headers: body ? { 'content-type': 'application/json' } : {},
       body: body ? JSON.stringify(body) : undefined,
-      credentials: 'same-origin'
+      credentials: 'include'
     });
     let data = {};
     try { data = await res.json(); } catch { /* sin cuerpo */ }
