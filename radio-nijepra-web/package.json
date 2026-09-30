@@ -1,0 +1,19 @@
+{
+  "name": "radio-nijepra-web",
+  "version": "1.0.0",
+  "description": "Plataforma de seguimiento de la hoja de ruta de Radio NIJEPRA: inicio de sesión, fases con entregables verificables y asistente de dudas.",
+  "main": "server/index.js",
+  "private": true,
+  "engines": {
+    "node": ">=22.5"
+  },
+  "scripts": {
+    "start": "node --no-warnings --env-file-if-exists=.env server/index.js",
+    "dev": "node --no-warnings --env-file-if-exists=.env --watch server/index.js",
+    "reset-db": "node --no-warnings --env-file-if-exists=.env server/reset.js"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  },
+  "license": "UNLICENSED"
+}
