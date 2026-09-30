@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Radio NIJEPRA · Hoja de ruta</title>
+  <meta name="description" content="Plataforma de seguimiento de la hoja de ruta de Radio NIJEPRA.">
+  <link rel="icon" href="/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+  <!-- ============ LOGIN ============ -->
+  <section id="login-view" class="login" hidden>
+    <div class="login-art" aria-hidden="true">
+      <div class="waves">
+        <span></span><span></span><span></span>
+      </div>
+      <img src="/logo.svg" alt="" class="login-logo">
+      <h2>Radio NIJEPRA</h2>
+      <p>La voz de nuestros estudiantes, fase a fase.</p>
+      <ul class="login-points">
+        <li>Sigue la hoja de ruta de la emisora</li>
+        <li>Marca y verifica cada entregable</li>
+        <li>Resuelve dudas con el asistente</li>
+      </ul>
+    </div>
+    <div class="login-panel">
+      <form id="login-form" class="card login-card" novalidate>
+        <h1>Iniciar sesión</h1>
+        <p class="muted">Plataforma institucional del Colegio Niño Jesús de Praga.</p>
+        <label class="field">
+          <span>Correo institucional</span>
+          <input type="email" name="email" autocomplete="username" required placeholder="nombre@nijepra.edu.co">
+        </label>
+        <label class="field">
+          <span>Contraseña</span>
+          <div class="pw-wrap">
+            <input type="password" name="password" autocomplete="current-password" required placeholder="••••••••">
+            <button type="button" class="pw-toggle" aria-label="Mostrar contraseña">Ver</button>
+          </div>
+        </label>
+        <p class="form-error" id="login-error" role="alert"></p>
+        <button class="btn btn-primary btn-block" type="submit">Entrar</button>
+        <p class="muted small center">¿No tienes cuenta? Pídela a la coordinación de la emisora.</p>
+      </form>
+      <p class="login-foot small muted">Colegio Niño Jesús de Praga · Universidad Santo Tomás, Bucaramanga</p>
+    </div>
+  </section>
+
+  <!-- ============ APP ============ -->
+  <div id="app-view" class="app" hidden>
+    <header class="topbar">
+      <a href="#inicio" class="brand">
+        <img src="/logo.svg" alt="" width="36" height="36">
+        <span><strong>Radio NIJEPRA</strong><small>Hoja de ruta</small></span>
+      </a>
+      <nav class="tabs" id="tabs" aria-label="Secciones">
+        <a href="#inicio" data-view="inicio">Inicio</a>
+        <a href="#ruta" data-view="ruta">Hoja de ruta</a>
+        <a href="#actividad" data-view="actividad">Actividad</a>
+        <a href="#usuarios" data-view="usuarios" class="admin-only">Usuarios</a>
+        <a href="#cuenta" data-view="cuenta">Mi cuenta</a>
+      </nav>
+      <div class="user-chip">
+        <span class="avatar" id="user-avatar"></span>
+        <span class="user-meta"><strong id="user-name"></strong><small id="user-role"></small></span>
+        <button class="btn btn-ghost btn-sm" id="logout-btn">Salir</button>
+      </div>
+    </header>
+
+    <main id="main" class="main" tabindex="-1"></main>
+
+    <nav class="bottom-nav" aria-label="Secciones">
+      <a href="#inicio" data-view="inicio"><svg viewBox="0 0 24 24"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>Inicio</a>
+      <a href="#ruta" data-view="ruta"><svg viewBox="0 0 24 24"><path d="M5 4h2v16H5zM9 6h10l-2 3 2 3H9z"/></svg>Ruta</a>
+      <a href="#actividad" data-view="actividad"><svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 9 9h-2a7 7 0 1 1-7-7zm-1 4h2v5l4 2-1 2-5-3z"/></svg>Actividad</a>
+      <a href="#cuenta" data-view="cuenta"><svg viewBox="0 0 24 24"><path d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4zm0 2c-4 0-8 2-8 5v1h16v-1c0-3-4-5-8-5z"/></svg>Cuenta</a>
+    </nav>
+
+    <!-- Asistente -->
+    <button class="chat-fab" id="chat-fab" aria-expanded="false" aria-controls="chat-panel">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H9l-5 4v-4H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm3 6a1.5 1.5 0 1 0 0 .01zm5 0a1.5 1.5 0 1 0 0 .01zm5 0a1.5 1.5 0 1 0 0 .01z"/></svg>
+      <span>¿Dudas?</span>
+    </button>
+    <section class="chat-panel" id="chat-panel" hidden aria-label="Asistente de dudas">
+      <header class="chat-head">
+        <div class="chat-bot-face" aria-hidden="true">
+          <svg viewBox="0 0 40 40"><rect x="6" y="10" width="28" height="22" rx="8"/><circle cx="15" cy="21" r="3"/><circle cx="25" cy="21" r="3"/><rect x="18" y="4" width="4" height="6" rx="2"/></svg>
+        </div>
+        <div>
+          <strong>Asistente NIJEPRA</strong>
+          <small id="chat-mode">Resuelve dudas del proyecto</small>
+        </div>
+        <button class="icon-btn" id="chat-clear" title="Borrar conversación" aria-label="Borrar conversación">
+          <svg viewBox="0 0 24 24"><path d="M9 3h6l1 2h4v2H4V5h4zm-3 6h12l-1 12H7z"/></svg>
+        </button>
+        <button class="icon-btn" id="chat-close" title="Cerrar" aria-label="Cerrar asistente">
+          <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" stroke-width="2.4" stroke-linecap="round"/></svg>
+        </button>
+      </header>
+      <div class="chat-log" id="chat-log" aria-live="polite"></div>
+      <div class="chat-suggest" id="chat-suggest">
+        <button type="button">¿Cómo marco un paso como completado?</button>
+        <button type="button">¿Qué necesito para la licencia FM?</button>
+        <button type="button">¿Qué hago con la música?</button>
+        <button type="button">¿Cuánto dura la UPS?</button>
+      </div>
+      <form class="chat-input" id="chat-form">
+        <textarea id="chat-text" rows="1" placeholder="Escribe tu pregunta…" aria-label="Tu pregunta"></textarea>
+        <button class="btn btn-primary" type="submit" aria-label="Enviar">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 20l18-8L3 4v6l12 2-12 2z"/></svg>
+        </button>
+      </form>
+    </section>
+  </div>
+
+  <!-- Cambio obligatorio de contraseña -->
+  <dialog id="pw-dialog" class="dialog">
+    <form id="pw-force-form" method="dialog" novalidate>
+      <h2>Crea tu contraseña</h2>
+      <p class="muted">Por seguridad, cambia la contraseña temporal antes de continuar.</p>
+      <label class="field"><span>Contraseña temporal</span><input type="password" name="current" required autocomplete="current-password"></label>
+      <label class="field"><span>Nueva contraseña (mínimo 8 caracteres)</span><input type="password" name="next" required minlength="8" autocomplete="new-password"></label>
+      <p class="form-error" role="alert"></p>
+      <button class="btn btn-primary btn-block" type="submit">Guardar y continuar</button>
+    </form>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <div class="confetti" id="confetti" aria-hidden="true"></div>
+
+  <script src="/app.js"></script>
+</body>
+</html>
