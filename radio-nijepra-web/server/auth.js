@@ -78,7 +78,7 @@ function login(req, res) {
   db.prepare('DELETE FROM sessions WHERE expires_at < ?').run(Date.now());
   res.cookie(COOKIE, token, {
     httpOnly: true,
-    sameSite: 'lax',
+    sameSite: 'none',
     secure: process.env.COOKIE_SECURE === 'true',
     maxAge: SESSION_DAYS * 24 * 60 * 60 * 1000,
     path: '/'
